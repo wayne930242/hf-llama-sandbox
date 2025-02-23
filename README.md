@@ -4,7 +4,7 @@ A simple script to run inference with r1-1776-distill-llama-70b.
 
 ## Prerequisites
 
-- >= Python 3.9
+- \>= Python 3.9
 
 ## Installation
 
