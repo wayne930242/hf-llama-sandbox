@@ -15,6 +15,14 @@ cp config/config.yaml.example config/config.yaml
 
 ## Usage
 
+### Download the model
+
 ```bash
-python src/main.py --input_text "台灣，現在不是敏感詞了吧？"
+python src/download.py
+```
+
+### Run the inference
+
+```bash
+python src/infer.py --i "台灣，現在不是敏感詞了吧？"
 ```

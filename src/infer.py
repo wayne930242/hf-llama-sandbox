@@ -6,41 +6,21 @@ from inference import run_inference
 
 
 def load_config(config_path: str) -> Dict[str, Any]:
-    """
-    Load the configuration from the YAML file.
-
-    Args:
-        config_path (str): The path to the configuration file
-
-    Returns:
-        Dict[str, Any]: The configuration dictionary
-    """
+    """Load the configuration from the YAML file."""
     with open(config_path, "r", encoding="utf-8") as file:
         config: Dict[str, Any] = yaml.safe_load(file)
     return config
 
 
 def parse_args() -> str:
-    """
-    Parse the command line arguments.
-
-    Returns:
-        str: The input text
-    """
-    parser = argparse.ArgumentParser(
-        description="Run inference with r1-1776-distill-llama-70b"
-    )
-    parser.add_argument(
-        "--input_text", type=str, required=True, help="Input text for inference"
-    )
+    parser = argparse.ArgumentParser(description="執行模型推理")
+    parser.add_argument("--i", type=str, required=True, help="輸入文字")
     args = parser.parse_args()
-    return args.input_text
+    return args.i
 
 
 def main() -> None:
-    """
-    Main function, execute the model loading and inference process.
-    """
+    """Execute the inference."""
     # Load the configuration file
     config: Dict[str, Any] = load_config("config/config.yaml")
 
@@ -50,7 +30,7 @@ def main() -> None:
     # Load the model and tokenizer
     model, tokenizer = load_model_and_tokenizer(model_name)
 
-    # Get the input text from the command line
+    # Get the input text
     input_text: str = parse_args()
 
     # Extract the inference parameters
